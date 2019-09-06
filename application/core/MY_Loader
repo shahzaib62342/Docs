@@ -1,0 +1,26 @@
+<?php
+class MY_Loader extends CI_Loader
+{
+	public function __construct()
+	{
+		parent::__construct();
+	}
+
+	public function template($view, $data = array(), $return = FALSE)
+	{
+		if ($return) {
+			$content = '';
+			$content .= $this->view("API/Documentation/common/header", $data, $return);
+			$content .= $this->view("API/Documentation/common/sidebar", $data, $return);
+			$content .= $this->view("API/Documentation/" . $view, $data, $return);
+			$content .= $this->view("API/Documentation/common/footer", $data, $return);
+			return $content;
+		}
+		$this->view("API/Documentation/common/header", $data, $return);
+		$this->view("API/Documentation/common/sidebar", $data, $return);
+		$this->view("API/Documentation/" . $view, $data, $return);
+		$this->view("API/Documentation/common/footer", $data, $return);
+	}
+}
+
+?>
