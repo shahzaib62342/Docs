@@ -22,10 +22,16 @@ class Documentation extends MY_Controller {
 		//get content of current module
 		$this->data['content'] = $this->Content->getContentByModuleSlug($slug);
 
-		//search 
 		
+		//search textbox name is 'keyword';
+		$keyword = $this->input->get('keyword');
+		
+		if($keyword) {
+			$this->data['content'] = $this->Search->searchbycontent($keyword);
+		}
 
 		$this->load->view('Documentation', $this->data);
+
 	}
 
 	private function getModules() {
@@ -56,9 +62,5 @@ class Documentation extends MY_Controller {
 		return $finalModules;
 	}
 
-	public function searchContent()
-	{
-		$keyword=$this->input->post('keyword');
-		$this->data['search']=$this->Search->searchbycontent($keyword);
-	}		
+		
 }

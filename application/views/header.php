@@ -42,14 +42,14 @@
 			</ol>
 
 			<div class="top-search-box">
-				<form class="form-inline search-form justify-content-center" action="" method="get">
 
-					<input type="text" placeholder="Search..." name="search" class="form-control search-input">
-
-					<button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				<form class="form-inline search-form justify-content-center" action="<?php echo site_url('Documentation/index');?>" method="get">
+					
+					<input type="text" placeholder="Search..." name="keyword" class="form-control search-input">
+					<input type="submit" class="btn search-btn " value="Search">
 
 				</form>
 			</div>
 
-		</div><!--//container-->
-	</header><!--//header-->
+		</div>
+	</header>
