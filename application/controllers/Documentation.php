@@ -13,6 +13,7 @@ class Documentation extends MY_Controller {
 		//Loading model
 		$this->load->model('Module');
 		$this->load->model('Content');
+		$this->load->model('Search');
 	}
 
 	public function index($slug = null) {
@@ -20,6 +21,9 @@ class Documentation extends MY_Controller {
 		$this->data['modules'] = $this->getModules();
 		//get content of current module
 		$this->data['content'] = $this->Content->getContentByModuleSlug($slug);
+
+		//search 
+		
 
 		$this->load->view('Documentation', $this->data);
 	}
@@ -50,5 +54,11 @@ class Documentation extends MY_Controller {
 			}
 		}
 		return $finalModules;
+	}
+
+	public function searchContent()
+	{
+		$keyword=$this->input->post('keyword');
+		$this->data['search']=$this->Search->searchbycontent($keyword);
 	}		
 }
