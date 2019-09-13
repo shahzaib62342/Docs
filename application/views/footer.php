@@ -21,37 +21,38 @@
     <!-- Modal content-->
     <div class="modal-content">
     	<div class="text-right">
-                    <input type="submit" name="submit" value="X" data-dismiss="modal" class="btn btn-danger">
+                    <button data-dismiss="modal" class="btn btn-danger ">X</button>
                  </div>
         <div class="modal-body">
-           <div style="margin-left: -16px;margin-top: -1px">
+           <div style="margin-left:-16px; margin-top:-51px">
              <img height="180px" class="rounded" width="498px" src="<?= base_url('Assets/images/help.png') ?>"/> 
 
            </div>
 
               <br>
-            <form>
+            <form action="<?php echo site_url('Documentation/')?>" method="post">
                 <div class="form-group";>
                     <label for="inputEmail4">Name<span class="text-danger font-weight-bold"> *</span></label>
-                    <input type="text" required class="form-control" id="inputEmail4" placeholder="Enter Full Name">
+                    <input type="text" required name="fullname" class="form-control" id="inputEmail4" placeholder="Enter Full Name">
                 </div>
                 <div class="form-group">
                     <label for="inputPassword4">Email<span class="text-danger font-weight-bold"> *</span></label>
-                    <input type="email" required class="form-control" placeholder="Enter Email">
+                    <input type="email" name="mail" required class="form-control" placeholder="Enter Email">
                 </div>
                 <div class="form-group">
     				<label for="exampleFormControlTextarea1">Describe What are you Looking?</label>
-    				<textarea resize: none; rows="3" cols="80" class="form-control" placeholder="Write Something" id="exampleFormControlTextarea1" rows="3">   					
+    				<textarea  rows="3" cols="80" name="msg"  class="form-control" placeholder="Write Something" id="exampleFormControlTextarea1">   					
     				</textarea>
   				</div>
                 <div class="text-right">
-                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                    <input type="submit" name="btnsubmit" value="Submit" class="btn btn-primary"/>
                 </div>
                 
                 
             </form>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Help Model Show by jQuery -->

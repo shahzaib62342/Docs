@@ -14,6 +14,7 @@ class Documentation extends MY_Controller {
 		$this->load->model('Module');
 		$this->load->model('Content');
 		$this->load->model('Search');
+		$this->load->model('HelpBot');
 	}
 
 	public function index($slug = null) {
@@ -29,9 +30,22 @@ class Documentation extends MY_Controller {
 		if($keyword) {
 			$this->data['content'] = $this->Search->searchbycontent($keyword);
 		}
-
 		$this->load->view('Documentation', $this->data);
 
+		//insert HelpBot
+		if ($this->input->post()) { 
+			$data = array(
+				'name'=>$this->input->post('fullname'),
+	        	'email'=>$this->input->post('mail'),
+	        	'message'=>$this->input->post('msg')
+	        );
+
+		    $this->HelpBot->addhelp($data);
+		    sleep(2);
+
+		    redirect('Documentation/successfull');
+
+		}
 	}
 
 	private function getModules() {
@@ -60,6 +74,11 @@ class Documentation extends MY_Controller {
 			}
 		}
 		return $finalModules;
+	}
+
+	public function successfull()
+	{
+		$this->load->view('successfull_message');
 	}
 
 		
